@@ -1,0 +1,25 @@
+<.header>
+  Listing Values
+  <:actions>
+    <.link href={~p"/values/new"}>
+      <.button>New Value</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="values" rows={@values} row_click={&JS.navigate(~p"/values/#{&1}")}>
+  <:col :let={value} label="Currency ID"><%= value.currency_id %></:col>
+  <:col :let={value} label="Record date"><%= value.record_date %></:col>
+  <:col :let={value} label="Record value"><%= value.record_value %></:col>
+  <:action :let={value}>
+    <div class="sr-only">
+      <.link navigate={~p"/values/#{value}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/values/#{value}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={value}>
+    <.link href={~p"/values/#{value}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

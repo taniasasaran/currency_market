@@ -1,0 +1,11 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:currency_id]} type="number" label="Currency ID" />
+  <.input field={f[:record_date]} type="date" label="Record date" />
+  <.input field={f[:record_value]} type="number" label="Record value" step="any" />
+  <:actions>
+    <.button>Save Value</.button>
+  </:actions>
+</.simple_form>
