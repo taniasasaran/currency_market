@@ -14,26 +14,37 @@
   <:item title="Description"><%= @currency.description %></:item>
 </.list>
 
-<!--
+
 <table class="values_table">
   <tr>
     <th>Date</th>
     <th>Value</th>
+    <th>Variation</th>
+    <th>Variation%</th>
   </tr>
-  <%= for value <- @currency.values do %>
+  <%= for {value, i} <- @currency.values |> Enum.with_index() do %>
     <tr>
       <td><%= value.record_date %></td>
       <td><%= value.record_value %></td>
+      <td><%= variation2(@currency.values |> Enum.at(i), value) %></td>
+      <td><%= variation2(@currency.values |> Enum.at(i), value) * 100 %></td>
     </tr>
   <% end %>
 </table>
--->
+
 
 <.table id="values" rows={@currency.values} row_click={&JS.navigate(~p"/values/#{&1}")}>
   <:col :let={value} label="Date"><%= value.record_date %></:col>
   <:col :let={value} label="Value"><%= value.record_value %></:col>
-  <:col :let={currency} label="Variation"><%= variation(@currency)%></:col>
-  <:col :let={currency} label="Variation %"><%= variation_percent(@currency)%></:col>
 </.table>
+
+<.table id="values" rows={variation(@currency)}>
+  <:col :let={variation} label="Variation"><%= variation %></:col>
+</.table>
+
+<.table id="values" rows={variation_percent(@currency)}>
+  <:col :let={variation} label="Variation %"><%= variation %></:col>
+</.table>
+
 
 <.back navigate={~p"/currencies"}>Back to currencies</.back>
