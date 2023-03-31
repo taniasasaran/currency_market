@@ -11,24 +11,4 @@ defmodule CurrencyMarketWeb.CurrencyHTML do
 
   def currency_form(assigns)
 
-  def variation(currency) do
-    values = currency.values
-    |> Enum.map(fn value -> value.record_value end)
-    [_ | next] = values
-    values
-    |> Enum.zip(next)
-    |> Enum.map(fn {a, b} -> Float.round(a - b, 4) end)
-    |> List.insert_at(0, 0/1)
-  end
-
-  def variation2(value1, value2) do
-    value2.record_value - value1.record_value
-  end
-
-  def variation_percent(currency) do
-    currency
-    |> variation()
-    |> Enum.map(fn value -> Float.to_string(value*100) <> "%"  end)
-    # |> Enum.map(fn value -> value)
-  end
 end
