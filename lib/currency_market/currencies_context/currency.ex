@@ -6,7 +6,7 @@ defmodule CurrencyMarket.CurrenciesContext.Currency do
   schema "currencies" do
     field :description, :string
     field :name, :string
-    has_many :values, Value #, references: :currency_id
+    has_many :values, Value
 
     timestamps()
   end

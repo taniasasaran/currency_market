@@ -3,3 +3,16 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+.values_table td{
+    border-width: 1px;
+    border-color: black;
+    background-color: ivory;
+    width: 500px;
+    text-align: center;
+    position: center;
+}
+
+.values_table{
+    margin-top: 50px;
+}

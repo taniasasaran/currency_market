@@ -37,6 +37,19 @@ defmodule CurrencyMarket.CurrenciesContext do
   """
   def get_currency!(id), do: Repo.get!(Currency, id)
 
+
+  def get_values_for_currency!(id) do
+
+    Repo.get!(Currency, id)
+    |> Repo.preload(:values)
+    # from v in currency, preload :values
+    # |> Repo.all()
+    # Currency
+    # |> Repo.all()
+    # |> Repo.preload(:values)
+
+  end
+
   @doc """
   Creates a currency.
 

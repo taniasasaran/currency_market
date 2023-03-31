@@ -3,6 +3,6 @@
   <:subtitle>Use this form to manage currency records in your database.</:subtitle>
 </.header>
 
-<.currency_form changeset={@changeset} action={~p"/currencies/#{@currency}"} />
+<.currency_form changeset={@changeset} action={~p"/currencies/#{@currency.id}"} />
 
 <.back navigate={~p"/currencies"}>Back to currencies</.back>

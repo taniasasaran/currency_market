@@ -10,4 +10,19 @@ defmodule CurrencyMarketWeb.CurrencyHTML do
   attr :action, :string, required: true
 
   def currency_form(assigns)
+
+  def variation(currency) do
+    values = currency.values
+    |> Enum.map(fn value -> value.record_value end)
+    [_ | next] = values
+    values
+    |> Enum.zip(next)
+    |> Enum.map(fn {a, b} -> a - b end)
+  end
+
+  def variation_percent(currency) do
+    currency
+    |> variation()
+    |> Enum.map(fn value -> value/100.0 end)
+  end
 end

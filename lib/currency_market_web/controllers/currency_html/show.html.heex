@@ -2,7 +2,7 @@
   Currency <%= @currency.id %>
   <:subtitle>This is a currency record from your database.</:subtitle>
   <:actions>
-    <.link href={~p"/currencies/#{@currency}/edit"}>
+    <.link href={~p"/currencies/#{@currency.id}/edit"}>
       <.button>Edit currency</.button>
     </.link>
   </:actions>
@@ -13,5 +13,27 @@
   <:item title="Name"><%= @currency.name %></:item>
   <:item title="Description"><%= @currency.description %></:item>
 </.list>
+
+<!--
+<table class="values_table">
+  <tr>
+    <th>Date</th>
+    <th>Value</th>
+  </tr>
+  <%= for value <- @currency.values do %>
+    <tr>
+      <td><%= value.record_date %></td>
+      <td><%= value.record_value %></td>
+    </tr>
+  <% end %>
+</table>
+-->
+
+<.table id="values" rows={@currency.values} row_click={&JS.navigate(~p"/values/#{&1}")}>
+  <:col :let={value} label="Date"><%= value.record_date %></:col>
+  <:col :let={value} label="Value"><%= value.record_value %></:col>
+  <:col :let={currency} label="Variation"><%= variation(@currency)%></:col>
+  <:col :let={currency} label="Variation %"><%= variation_percent(@currency)%></:col>
+</.table>
 
 <.back navigate={~p"/currencies"}>Back to currencies</.back>

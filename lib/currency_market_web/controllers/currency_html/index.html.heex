@@ -12,12 +12,12 @@
   <:col :let={currency} label="Description"><%= currency.description %></:col>
   <:action :let={currency}>
     <div class="sr-only">
-      <.link navigate={~p"/currencies/#{currency}"}>Show</.link>
+      <.link navigate={~p"/currencies/#{currency.id}"}>Show</.link>
     </div>
-    <.link navigate={~p"/currencies/#{currency}/edit"}>Edit</.link>
+    <.link navigate={~p"/currencies/#{currency.id}/edit"}>Edit</.link>
   </:action>
   <:action :let={currency}>
-    <.link href={~p"/currencies/#{currency}"} method="delete" data-confirm="Are you sure?">
+    <.link href={~p"/currencies/#{currency.id}"} method="delete" data-confirm="Are you sure?">
       Delete
     </.link>
   </:action>

@@ -27,7 +27,7 @@ defmodule CurrencyMarketWeb.CurrencyController do
   end
 
   def show(conn, %{"id" => id}) do
-    currency = CurrenciesContext.get_currency!(id)
+    currency = CurrenciesContext.get_values_for_currency!(id)
     render(conn, :show, currency: currency)
   end
 
